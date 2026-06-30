@@ -1,0 +1,24 @@
+{
+  "name": "village-water-backend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "next": "^13.4.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@prisma/client": "^4.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "prisma": "^4.0.0"
+  }
+}

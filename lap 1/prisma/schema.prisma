@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Household {
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String?
+  meters    Meter[]
+  createdAt DateTime @default(now())
+}
+
+model Meter {
+  id          Int      @id @default(autoincrement())
+  serial      String   @unique
+  household   Household @relation(fields: [householdId], references: [id])
+  householdId Int
+  readings    Reading[]
+  installedAt DateTime?
+}
+
+model Reading {
+  id        Int      @id @default(autoincrement())
+  meter     Meter    @relation(fields: [meterId], references: [id])
+  meterId   Int
+  timestamp DateTime @default(now())
+  volume    Float
+}
